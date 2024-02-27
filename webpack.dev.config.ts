@@ -43,7 +43,7 @@ const config: webpack.Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public", "index.html"),
-      title: "HyperPost Dev",
+      title: "Maritime UI",
     }),
     new MiniCssExtractPlugin({
       filename: "styles/[name].[contenthash].css",

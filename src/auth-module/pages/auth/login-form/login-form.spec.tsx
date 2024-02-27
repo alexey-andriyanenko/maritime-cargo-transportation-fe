@@ -6,11 +6,11 @@ import { rest } from "msw";
 import { appTestRender } from "src/shared-module/tests";
 import { server } from "src/msw";
 
-import { SignInForm } from "./sign-in-form";
+import { LoginForm } from "./login-form";
 
 describe("LoginViaEmailForm", () => {
   it("renders with correct text", async () => {
-    const { getByTestId } = await appTestRender(<SignInForm />, false);
+    const { getByTestId } = await appTestRender(<LoginForm />, false);
 
     const emailField = getByTestId("email");
     const emailInput = emailField.querySelector("input");
@@ -30,7 +30,7 @@ describe("LoginViaEmailForm", () => {
   });
 
   it("validation works correctly", async () => {
-    const { getByTestId } = await appTestRender(<SignInForm />, false);
+    const { getByTestId } = await appTestRender(<LoginForm />, false);
 
     const emailField = getByTestId("email");
     const emailInput = emailField.querySelector("input");
@@ -69,7 +69,7 @@ describe("LoginViaEmailForm", () => {
   });
 
   it("button state changes correctly on form submit", async () => {
-    const { getByTestId } = await appTestRender(<SignInForm />, false);
+    const { getByTestId } = await appTestRender(<LoginForm />, false);
 
     const emailField = getByTestId("email");
     const emailInput = emailField.querySelector("input");
@@ -99,7 +99,7 @@ describe("LoginViaEmailForm", () => {
       rest.post("http://localhost:8000/users/login/email", (req, res, ctx) => res(ctx.status(401))),
     );
 
-    const { getByTestId } = await appTestRender(<SignInForm />, false);
+    const { getByTestId } = await appTestRender(<LoginForm />, false);
 
     const emailField = getByTestId("email");
     const emailInput = emailField.querySelector("input");

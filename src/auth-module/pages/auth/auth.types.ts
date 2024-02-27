@@ -1,4 +1,4 @@
 export enum AuthEnum {
-  LoginViaEmail,
-  LoginViaPhone,
+  Login,
+  Session,
 }

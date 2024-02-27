@@ -6,9 +6,9 @@ import { useNavigate } from "react-router";
 import { EMAIL_PATTERN } from "src/shared-module/constants";
 import { useAuthStore } from "src/auth-module/store";
 
-import { ISignInForm } from "./sign-in-form.types";
+import { ILoginForm } from "./login-form.types";
 
-export const SignInForm = () => {
+export const LoginForm = () => {
   const navigate = useNavigate();
   const userStore = useAuthStore();
   const {
@@ -16,13 +16,13 @@ export const SignInForm = () => {
     handleSubmit,
     setError,
     formState: { errors, isSubmitting },
-  } = useForm<ISignInForm>({
+  } = useForm<ILoginForm>({
     mode: "onSubmit",
   });
 
-  const onSubmit = async (data: ISignInForm) => {
+  const onSubmit = async (data: ILoginForm) => {
     try {
-      await userStore.signIn(data);
+      await userStore.login(data);
     } catch (error) {
       if (error instanceof XMLHttpRequest) {
         if (error.status === 401) {
@@ -93,7 +93,7 @@ export const SignInForm = () => {
         {isSubmitting ? (
           <CircularProgress size={24} sx={{ position: "absolute" }} data-testid="loader" />
         ) : (
-          "Sign In"
+          "Log In"
         )}
       </Button>
     </Box>
