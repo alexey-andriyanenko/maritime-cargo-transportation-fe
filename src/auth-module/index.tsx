@@ -4,12 +4,12 @@ import Auth from "./pages/auth";
 import { IRoute } from "../core-module/routes";
 
 export const AuthRoutes = {
-  auth: "/auth",
+  login: "/login",
 };
 
 const routes: IRoute[] = [
   {
-    path: AuthRoutes.auth,
+    path: AuthRoutes.login,
     element: <Auth />,
   },
 ];

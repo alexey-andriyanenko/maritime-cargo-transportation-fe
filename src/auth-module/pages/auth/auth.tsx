@@ -1,15 +1,24 @@
 import React, { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router";
 import { Avatar, Box, Container, Icon } from "@mui/material";
 
 import { useAuthStore } from "src/auth-module/store";
+import { eventBus } from "src/event-bus";
+
 import { LoginForm } from "./login-form";
 import { SessionForm } from "./session-form";
 import { AuthEnum } from "./auth.types";
 
 const Auth: React.FC = observer(() => {
+  const navigate = useNavigate();
   const authStore = useAuthStore();
   const [view, setView] = React.useState<AuthEnum>(AuthEnum.Login);
+
+  useEffect(() => {
+    if (!authStore.isLogged || !authStore.isSessionFulfilled) return;
+    eventBus.emit("session-fulfilled");
+  }, [authStore.isLogged, authStore.isSessionFulfilled]);
 
   useEffect(() => {
     if (!authStore.isLogged) return;

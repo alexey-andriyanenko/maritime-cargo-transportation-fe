@@ -3,11 +3,11 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { eventBus } from "src/event-bus";
 
 import { authApiService, ILoginRequest } from "../api";
-import { ICompany } from "../models";
+import { ICompany, ISession } from "../models";
 
 class AuthStore {
   private _isLogged = false;
-  private _isCompanySelected = false;
+  private _isSessionFulfilled = false;
 
   private _companies: ICompany[] = [];
 
@@ -20,8 +20,8 @@ class AuthStore {
     return this._isLogged;
   }
 
-  public get isCompanySelected() {
-    return this._isCompanySelected;
+  public get isSessionFulfilled() {
+    return this._isSessionFulfilled;
   }
 
   public get companies() {
@@ -34,7 +34,7 @@ class AuthStore {
 
       runInAction(() => {
         this._isLogged = !!result.user;
-        this._isCompanySelected = !!result.company;
+        this._isSessionFulfilled = !!result.company;
       });
     } catch (e) {
       eventBus.emit("logout");
@@ -46,7 +46,6 @@ class AuthStore {
 
     runInAction(() => {
       this._isLogged = true;
-      eventBus.emit("login");
     });
   }
 
@@ -62,13 +61,14 @@ class AuthStore {
     await authApiService.fulfillSession(companyId);
 
     runInAction(() => {
-      this._isCompanySelected = true;
+      this._isSessionFulfilled = true;
+      eventBus.emit("session-fulfilled");
     });
   }
 
   private _clear() {
     this._isLogged = false;
-    this._isCompanySelected = false;
+    this._isSessionFulfilled = false;
   }
 }
 

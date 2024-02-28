@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import { useAuthStore } from "src/auth-module/store";
-import { shipsApiService } from "../../../../ships/api/ships.api";
+import { shipsApiService } from "src/ships/api/ships.api";
 
 export const SessionForm: React.FC = observer(() => {
   const authStore = useAuthStore();

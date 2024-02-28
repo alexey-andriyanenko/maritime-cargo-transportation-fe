@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 import { useAuthStore } from "src/auth-module/store";
 
+import CoreModule from "../index";
 import AuthModule from "src/auth-module";
 
 import { Navigator } from "../navigator";
@@ -15,15 +16,15 @@ export const App = observer(() => {
   const authStore = useAuthStore();
 
   useEffect(() => {
-    if (!authStore.isLogged) return;
-  }, [authStore.isLogged]);
+    authStore.checkSession();
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <BrowserRouter>
         <Navigator />
-
+        <AppRoutes routes={CoreModule.routes} />
         <AppRoutes routes={AuthModule.routes} />
       </BrowserRouter>
     </ThemeProvider>
