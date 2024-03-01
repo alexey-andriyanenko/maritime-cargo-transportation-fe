@@ -1,4 +1,4 @@
-import { ICompany } from "../ICompany";
+import { ICompany } from "../company";
 
 export const companyMock: ICompany = {
   id: 1,

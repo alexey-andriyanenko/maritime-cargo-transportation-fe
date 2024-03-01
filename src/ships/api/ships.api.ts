@@ -1,8 +1,9 @@
 import { httpClient } from "src/shared-module/api";
+import { IShip } from "../models";
 
 class ShipsApiService {
-  getListOfContainerShips() {
-    return httpClient.get("/container-ships").send();
+  loadShips(): Promise<IShip[]> {
+    return httpClient.get<IShip[]>("/ships").send();
   }
 }
 

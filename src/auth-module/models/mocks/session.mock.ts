@@ -1,4 +1,4 @@
-import { ISession } from "../ISession";
+import { ISession } from "../session";
 import { userMock } from "./user.mock";
 import { companyMock } from "./company.mock";
 

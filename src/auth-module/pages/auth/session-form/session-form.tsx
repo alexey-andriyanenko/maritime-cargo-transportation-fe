@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 
 import { useAuthStore } from "src/auth-module/store";
-import { shipsApiService } from "src/ships/api/ships.api";
 
 export const SessionForm: React.FC = observer(() => {
   const authStore = useAuthStore();
@@ -35,7 +34,6 @@ export const SessionForm: React.FC = observer(() => {
 
     try {
       await authStore.fulfillSession(companyId);
-      await shipsApiService.getListOfContainerShips();
     } catch (e) {
       console.error(e);
     }

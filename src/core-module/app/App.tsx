@@ -7,6 +7,7 @@ import { useAuthStore } from "src/auth-module/store";
 
 import CoreModule from "../index";
 import AuthModule from "src/auth-module";
+import ShipsModule from "src/ships";
 
 import { Navigator } from "../navigator";
 import { AppRoutes } from "../routes";
@@ -26,6 +27,7 @@ export const App = observer(() => {
         <Navigator />
         <AppRoutes routes={CoreModule.routes} />
         <AppRoutes routes={AuthModule.routes} />
+        <AppRoutes routes={ShipsModule.routes} />
       </BrowserRouter>
     </ThemeProvider>
   );

@@ -1,5 +1,5 @@
 import { ICompany } from "../models";
-import { IUser } from "../models/IUser";
+import { IUser } from "../models/user";
 
 export interface ILoginRequest {
   email: string;

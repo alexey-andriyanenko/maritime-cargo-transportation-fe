@@ -1,21 +1,15 @@
-import { rest } from "msw";
+import { http, HttpResponse } from "msw";
 
 import { fulfilledSessionMock } from "src/auth-module/models/mocks";
 import { companiesMock } from "./companies.mock";
 
 export const createAuthMockHandlers = (baseUrl: string) => {
   return [
-    rest.post(baseUrl + "/auth/login", (req, res, ctx) => {
-      return res(ctx.status(200));
-    }),
-    rest.post(baseUrl + "/auth/session", (req, res, ctx) => {
-      return res(ctx.status(200));
-    }),
-    rest.get(baseUrl + "/companies", (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(companiesMock));
-    }),
-    rest.get(baseUrl + "/auth/session", (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(fulfilledSessionMock));
-    }),
+    http.post(baseUrl + "/auth/login", () => HttpResponse.json(null, { status: 200 })),
+    http.post(baseUrl + "/auth/session", () => HttpResponse.json(null, { status: 200 })),
+    http.get(baseUrl + "/companies", () => HttpResponse.json(companiesMock, { status: 200 })),
+    http.get(baseUrl + "/auth/session", () =>
+      HttpResponse.json(fulfilledSessionMock, { status: 200 }),
+    ),
   ];
 };

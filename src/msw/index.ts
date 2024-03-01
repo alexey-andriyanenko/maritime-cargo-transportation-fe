@@ -1,3 +1,3 @@
 export * from "./msw-handlers";
-export * from "./msw-server";
-export * from "./msw-worker";
+export * from "./msw-node";
+export * from "./msw-browser";

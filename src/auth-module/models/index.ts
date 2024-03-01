@@ -1,3 +1,3 @@
-export * from "./ICompany";
-export * from "./IUser";
-export * from "./ISession";
+export * from "./company";
+export * from "./user";
+export * from "./session";

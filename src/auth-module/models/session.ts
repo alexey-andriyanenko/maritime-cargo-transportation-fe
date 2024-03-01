@@ -1,5 +1,5 @@
-import { IUser } from "./IUser";
-import { ICompany } from "./ICompany";
+import { IUser } from "./user";
+import { ICompany } from "./company";
 
 export interface ISession<Fulfilled extends boolean = true> {
   user: IUser;

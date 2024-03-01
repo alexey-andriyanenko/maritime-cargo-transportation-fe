@@ -11,6 +11,7 @@ const routes: IRoute[] = [
   {
     path: CoreRoutes.home,
     element: <Home />,
+    isPrivate: true,
   },
 ];
 

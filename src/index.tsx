@@ -3,10 +3,9 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 
 import { App } from "./core-module/app";
-import { mswWorker } from "src/msw/msw-worker";
+import { checkForBrowserMocking } from "src/msw/msw-browser";
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const root = createRoot(document.getElementById("root")!);
-root.render(<App />);
-
-if (ENABLE_MOCK) mswWorker.start();
+checkForBrowserMocking().then(() => {
+  const root = createRoot(document.getElementById("root")!);
+  root.render(<App />);
+});
