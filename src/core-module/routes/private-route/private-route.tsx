@@ -13,7 +13,7 @@ export interface IPrivateRouteProps {
 export const PrivateRoute: React.FC<IPrivateRouteProps> = observer(({ children }) => {
   const authStore = useAuthStore();
 
-  if (!authStore.isLogged || !authStore.isSessionFulfilled)
+  if (authStore.isLogged === false || authStore.isSessionFulfilled === false)
     return <Navigate to={AuthRoutes.login} />;
   return <AppLayout>{children}</AppLayout>;
 });

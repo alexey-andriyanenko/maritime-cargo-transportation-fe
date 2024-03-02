@@ -3,11 +3,11 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { eventBus } from "src/event-bus";
 
 import { authApiService, ILoginRequest } from "../api";
-import { ICompany, ISession } from "../models";
+import { ICompany } from "../models";
 
 class AuthStore {
-  private _isLogged = false;
-  private _isSessionFulfilled = false;
+  private _isLogged: boolean | null = null;
+  private _isSessionFulfilled: boolean | null = null;
 
   private _companies: ICompany[] = [];
 
