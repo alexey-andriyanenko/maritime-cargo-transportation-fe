@@ -11,6 +11,7 @@ const config: webpack.Configuration = {
     path: path.resolve(__dirname, "dist"),
     filename: "[file].[contenthash].js",
     clean: true,
+    publicPath: "/",
   },
   devServer: {
     port: 9000,

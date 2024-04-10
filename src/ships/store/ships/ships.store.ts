@@ -14,6 +14,7 @@ class ShipsStore {
     page: 1,
     limit: 10,
   };
+  private _details: IShip | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -40,6 +41,10 @@ class ShipsStore {
     return this._filters;
   }
 
+  public get details() {
+    return this._details;
+  }
+
   public async loadShips() {
     runInAction(() => {
       this._isLoading = true;
@@ -58,6 +63,10 @@ class ShipsStore {
         this._isLoading = false;
       });
     }
+  }
+
+  public async loadDetails(id: number) {
+    this._details = await shipsApiService.loadDetails(id);
   }
 
   private _clear() {

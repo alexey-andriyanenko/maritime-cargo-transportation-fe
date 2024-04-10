@@ -1,8 +1,8 @@
-import { IEntity } from "src/shared-module/models/entity";
+import { IEntity, ICountry } from "src/shared-module/models";
 
 export interface IShip {
   id: number;
   name: string;
-  flag: IEntity;
+  country: ICountry;
   type: IEntity;
 }

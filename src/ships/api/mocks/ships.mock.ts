@@ -4,9 +4,11 @@ export const shipsMock: IShip[] = [
   {
     id: 1,
     name: "Floriston",
-    flag: {
+    country: {
       id: 1,
-      name: "UK",
+      name: "United Kingdom",
+      countryCode: "UK",
+      flagUrl: "flag-url",
     },
     type: {
       id: 1,

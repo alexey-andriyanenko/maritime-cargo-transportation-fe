@@ -43,7 +43,7 @@ export const ShipsList = observer(() => {
               <TableRow key={`ship-${ship.id}`} data-testid={`ship-${ship.id}`}>
                 <TableCell> {ship.id} </TableCell>
                 <TableCell> {ship.name} </TableCell>
-                <TableCell> {ship.flag.name} </TableCell>
+                <TableCell> {ship.country.name} </TableCell>
                 <TableCell> {ship.type.name} </TableCell>
                 <TableCell>
                   <IconButton data-testid="edit-btn">
